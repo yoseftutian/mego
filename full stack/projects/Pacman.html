@@ -1,0 +1,239 @@
+<!--
+<canvas id="myCanvas" width="400" height="400" style="border:1px solid;"></canvas>
+<br>
+<p>X:</p>
+<p id="x_value">--</p>
+<p>Y:</p>
+<p id="y_value">--</p>
+<p>Your score is:</p>
+<p id="score_value">--</p>
+<p>applex:</p>
+<p id="applex_value">--</p>
+<p>appley:</p>
+<p id="appley_value">--</p>
+<p>rundomx:</p>
+<p id="rundomx_value">--</p>
+<p>rundomy:</p>
+<p id="rundomy_value">--</p>
+
+
+<script>
+    //----------------------------------------------------
+
+    function keyDownEventHandler() {
+        if (event.keyCode == 40)
+            direction = "down";
+        if (event.keyCode == 38)
+            direction = "up";
+        if (event.keyCode == 37)
+            direction = "left";
+        if (event.keyCode == 39)
+            direction = "right";
+    }
+    function TimeEventHandler() {
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, 400, 400);
+        if (direction == "down")
+            y += 20;
+        if (direction == "up")
+            y -= 20;
+        if (direction == "left")
+            x -= 20;
+        if (direction == "right")
+            x += 20;
+
+        if (y == 380)
+            direction = 'up';
+
+        if (y == 0)
+            direction = 'down';
+        if (x == 380)
+            direction = 'left';
+        if (x == 0)
+            direction = 'right';
+
+        document.getElementById("x_value").innerHTML = x;
+        document.getElementById("y_value").innerHTML = y;
+
+
+        if (x == applex && y == appley) {
+            score += 1;
+            document.getElementById("score_value").innerHTML = score;
+            rundomx = Math.floor(Math.random() * 380);
+            rundomy = Math.floor(Math.random() * 380);
+
+            applex = rundomx - rundomx % 20;
+            appley = rundomy - rundomy % 20;
+
+
+            document.getElementById("applex_value").innerHTML = applex;
+            document.getElementById("appley_value").innerHTML = appley;
+            document.getElementById("rundomx_value").innerHTML = rundomx;
+            document.getElementById("rundomy_value").innerHTML = rundomy;
+        }
+
+
+
+
+        //draw rectangular 
+        ctx.fillStyle = "black";
+        ctx.fillRect(x, y, 20, 20);
+
+        ctx.fillStyle = "red";
+        ctx.fillRect(applex, appley, 20, 20);
+
+    }
+    //----------------------------------------------------
+
+    var rundomx = 0;
+    var rundomy = 0;
+    canvas = document.getElementById('myCanvas');
+    ctx = canvas.getContext('2d');
+    var x = 40;
+    var y = 40;
+    var applex = 100;
+    var appley = 20;
+    var direction = "right";
+    var score = 0;
+
+
+    document.onkeydown = keyDownEventHandler;
+    setInterval(TimeEventHandler, 300);
+
+</script>-->
+<!--<canvas id="myCanvas" width="300" height="300" style="border:1px solid;"></canvas>
+<br>
+<p>X:</p>
+<p id="x_value">--</p>
+<p>Y:</p>
+<p id="y_value">--</p>
+<script>
+    //-----------------------------------------------------
+    function TimeEventHandler() {
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, 300, 300);
+        if (y == 0)
+            height = 'down';
+        if (y == 280)
+            height = 'up';
+        if (height == 'down')
+            y += 20;
+        else
+            y -= 20;
+        if (x == 280)
+            diraction = 'left';
+        if (x == 0)
+            diraction = 'right';
+
+        if (diraction == 'right')
+            x += 20;
+        else
+            x -= 20;
+        document.getElementById("x_value").innerHTML = x;
+        document.getElementById("y_value").innerHTML = y;
+        //draw rectangular 
+        ctx.fillStyle = "black";
+        ctx.fillRect(x, y, 20, 20);
+    }
+    //-----------------------------------------------------
+    ctx = document.getElementById('myCanvas').getContext('2d');
+    var x = 100;
+    var y = 100;
+    var diraction = 'right';
+    var height = 'up'
+    setInterval(TimeEventHandler, 300);
+</script>-->
+
+<canvas id="myCanvas" width="300" height="300" style="border:1px solid;"></canvas>
+<br>
+<p>X:</p>
+<p id="x_value">--</p>
+<p>Y:</p>
+<p id="y_value">--</p>
+<p>score:</p>
+<p id="score">--</p>
+<script>
+    //-----------------------------------------------------
+    function keyDownEventHandler() {
+
+        if (event.keyCode == 40)
+            direction = "down";
+        if (event.keyCode == 38)
+            direction = "up";
+        if (event.keyCode == 37)
+            direction = "left";
+        if (event.keyCode == 39)
+            direction = "right";
+
+    }
+    function TimeEventHandler() {
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, 400, 300);
+        if (direction == "right")
+            player_x += 20;
+        if (player_x > 280)
+            player_x = 0;
+        if (direction == "left")
+            player_x -= 20;
+        if (player_x < 0)
+            player_x = 280;
+        if (direction == "down")
+            player_y += 20;
+        if (player_y > 280)
+            player_y = 0;
+        if (direction == "up")
+            player_y -= 20;
+        if (player_y < 0)
+            player_y = 280;
+        if (player_x == x && player_y == y)
+            x = Math.floor(Math.random() * 15) * 20, y = Math.floor(Math.random() * 15) * 20, score += 10;
+        document.getElementById("x_value").innerHTML = player_x;
+        document.getElementById("y_value").innerHTML = player_y;
+        document.getElementById("score").innerHTML = score;
+        //draw rectangular 
+        ctx.fillStyle = "black";
+        ctx.fillRect(player_x, player_y, 20, 20);
+        ctx.fillStyle = "green";
+        ctx.fillRect(x, y, 20, 20);
+        ctx.fillStyle = "yellow";
+        ctx.fillRect(chaser_x, chaser_y, 20, 20)
+        //setTimeout(TimeEventHandler, time);
+
+    }
+    function time_of_chaser() {
+        if (direction == "right" && chaser_y != player_y || direction == "left" && chaser_y != player_y)
+            chaser_y -= 20;
+        if (direction == "right" && chaser_y == player_y || direction == "left" && chaser_y == player_y)
+            chaser_x -= 20;
+        if (direction == "up" && chaser_x != player_x || direction == "down" && chaser_x != player_x)
+            chaser_x -= 20;
+        if (direction == "up" && chaser_x == player_x || direction == "down" && chaser_x == player_x)
+            chaser_y -= 20;
+        if (chaser_x > 280)
+            chaser_y = 0;
+        if (chaser_y > 280)
+            chaser_y = 0;
+        if (chaser_x < 0)
+            chaser_x = 280;
+        if (chaser_y < 0)
+            chaser_y = 280;
+
+    
+
+    }
+    //-----------------------------------------------------
+    ctx = document.getElementById('myCanvas').getContext('2d');
+    var player_x = 100;
+    var player_y = 100;
+    var chaser_x = 220;
+    var chaser_y = 220;
+    var x = 180;
+    var y = 180;
+    var direction = "right";
+    var score = 0;
+    var time = 300;
+    document.onkeydown = keyDownEventHandler;
+    setInterval(TimeEventHandler, time);
+    setInterval(time_of_chaser, 250);
+
+</script>
