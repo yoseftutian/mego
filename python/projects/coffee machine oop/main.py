@@ -3,6 +3,8 @@ from coffee_maker import CoffeeMaker
 from money_machine import MoneyMachine
 
 
+# A coffee machine using an object-oriented programming method
+
 def main():
     coffee_maker = CoffeeMaker()
     menu = Menu()
