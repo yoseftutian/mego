@@ -1,0 +1,99 @@
+
+
+nav {
+	background-color: #333; /* צבע רקע */
+	color: #4cb655; /* צבע טקסט */
+	text-align: center; /* מרכוז את הטקסט */
+	padding: 10px 0; /* הוספת מרווחים מלמעלה ומלמטה */
+  }
+  
+  .container {
+	max-width: 1200px; /* רוחב מרבי של התכנים */
+	margin: 0 auto; /* מרכז את התכנים באמצעות margin */
+  }
+  
+  a {
+	text-decoration: none; /* מוחק קווים תחתונים מהקישורים */
+	color: #fff; /* צבע הקישורים */
+	font-size: 18px; /* גודל פונט של הקישורים */
+	margin: 0 20px; /* מרווחים בין הקישורים */
+  }
+  
+  a:hover {
+	color: #ff6600; /* צבע הקישורים ב-hover */
+  }
+  
+/*---------------------box----------------------------*/
+
+body {
+  background-color: rgb(227, 230, 173);
+}
+
+.box {
+	display: inline-block;
+	font-size: 25px;
+	width: 49%;
+	vertical-align: middle;
+}
+
+.content {
+	padding: 25px;
+}
+
+
+/*---------------------media----------------------------*/
+@media (max-width:700px)
+
+/*At less of 700px width*/
+	{
+	.box {
+		width: 100%
+			/*u_1_2 width is 100% instead of 50% */
+	}
+}
+
+
+/*---------------------header----------------------------*/
+.header {
+	text-align: center;
+	margin: 20px 0;
+}
+
+/*---------------------button----------------------------*/
+button {
+	background-color: #ff6600;
+	color: #fff;
+	font-size: 20px;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 25px; /* יוצר כפתור מעוגל */
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+	background-color: #1ec590;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* צל על hover */
+  }
+  
+/*---------------------image----------------------------*/
+img {
+
+	width: 100%;
+	border: 2px solid;
+}
+
+a {
+	text-decoration: none;
+	font-size: 25px;
+}
+
+/*---------------------global----------------------------*/
+* {
+	direction: rtl;
+	/*Set the line height for the element*/
+	line-height: 150%;
+	/*The vertical-align property sets the vertical alignment of an element.*/
+	margin: 0;
+	word-spacing: 6px;
+}
